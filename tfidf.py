@@ -1,3 +1,4 @@
+import math
 from collections import defaultdict
 
 
@@ -16,6 +17,14 @@ def get_df():
             for w in words:
                 word_df[w] += 1
     return char_df, word_df
+
+
+def get_tf_idf(bow, df):
+    res = defaultdict(float)
+    for w in bow:
+        res[w] += 1.0 / math.log(df[w] + 1)
+    return res
+
 
 
 
